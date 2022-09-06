@@ -29,4 +29,5 @@ public class MathUtilities
     	int value = (int)(x * Math.pow(10, EPSILON_POWER - 1));
     	return value / Math.pow(10, EPSILON_POWER - 1);
     }
+    
 }

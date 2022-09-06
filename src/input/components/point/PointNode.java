@@ -5,6 +5,7 @@ import utilities.math.MathUtilities;
 /**
  * A 2D Point (x, y).
  */
+
 public class PointNode
 {
 	protected static final String ANONYMOUS = "__UNNAMED";
@@ -68,4 +69,5 @@ public class PointNode
 		
 		return _name + " (" + xString + ", " + yString + ")"; 
 	}
+    
 }

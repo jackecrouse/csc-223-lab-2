@@ -19,6 +19,11 @@ public class PointNode
 	public String getName() { return _name; }
 
 
+	public PointNode()
+	{
+		
+	}
+	
 	
 	/**
 	 * Create a new Point with the specified coordinates.

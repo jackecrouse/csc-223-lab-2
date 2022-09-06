@@ -52,9 +52,11 @@ public class PointNode
 	@Override
 	public boolean equals(Object obj)
 	{
-		if(obj.toString() == this.toString())
+		if (!(obj instanceof PointNode))
+			return false;
+		PointNode checkerNode = (PointNode) obj;
+		if(checkerNode.getX() == this._x && checkerNode.getY() == this._y && checkerNode.getName() == this._name)
 			return true;
-					
 		return false;
 	}
 

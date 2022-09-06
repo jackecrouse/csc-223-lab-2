@@ -29,4 +29,5 @@ public class SegmentNode
 			return true;
 		return false;
 	}
+	
 }

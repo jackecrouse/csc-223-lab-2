@@ -30,4 +30,16 @@ public class SegmentNode
 		return false;
 	}
 	
+	public String toString()
+	{
+		String res = "["; 
+
+		res += _point1.toString();
+		res += ", ";
+		res += _point2.toString();
+		res += "]";
+
+		return res;
+	}
+	
 }

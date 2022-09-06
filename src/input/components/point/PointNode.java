@@ -1,7 +1,5 @@
 package input.components.point;
 
-import utilities.math.MathUtilities;
-
 /**
  * A 2D Point (x, y).
  */
@@ -11,6 +9,7 @@ public class PointNode
 	protected static final String ANONYMOUS = "__UNNAMED";
 
 	protected double _x;
+	
 	public double getX() { return this._x; }
 
 	protected double _y; 
@@ -19,6 +18,8 @@ public class PointNode
 	protected String _name; 
 	public String getName() { return _name; }
 
+
+	
 	/**
 	 * Create a new Point with the specified coordinates.
 	 * @param x The X coordinate

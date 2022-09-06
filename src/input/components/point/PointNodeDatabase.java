@@ -4,8 +4,11 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-public class PointNodeDatabase {
-	
+public class PointNodeDatabase 
+{
+	/**
+	 * Instance vars and 2 constructors for PointNodeDatabase
+	 * */
 	Set<PointNode> _points;
 	
 	PointNodeDatabase()
@@ -19,11 +22,18 @@ public class PointNodeDatabase {
 		_points.addAll(list);
 	}
 	
+	/**
+	 * adds PointNode to _points
+	 * */
 	public void put(PointNode node)
 	{
 		_points.add(node);
 	}
 	
+	/**
+	 * checks if _points contains a given PointNode
+	 * @return boolean
+	 * */
 	public boolean contains(PointNode node)
 	{
 		for(PointNode item : _points)
@@ -34,6 +44,11 @@ public class PointNodeDatabase {
 		return false;
 	}
 	
+	/**
+	 * checks if _points contains a PointNode containing 
+	 * specified values
+	 * @return boolean
+	 * */
 	public boolean contains(double x, double y)
 	{
 		for(PointNode item: _points)
@@ -44,6 +59,9 @@ public class PointNodeDatabase {
 		return false;
 	}
 	
+	/**
+	 * @return name of given PointNode
+	 * */
 	public String getName(PointNode node)
 	{
 		for(PointNode item : _points)
@@ -53,6 +71,9 @@ public class PointNodeDatabase {
 		return PointNode.ANONYMOUS;
 	}
 	
+	/**
+	 * @return name of PointNode containing give values
+	 * */
 	public String getName(double x, double y)
 	{
 		for(PointNode item : _points)
@@ -62,6 +83,10 @@ public class PointNodeDatabase {
 		return PointNode.ANONYMOUS;
 	}
 	
+	/**
+	 * getter for given PointNode
+	 * @return PointNode
+	 * */
 	public PointNode getPoint(PointNode node)
 	{
 		for(PointNode item : _points)
@@ -71,6 +96,10 @@ public class PointNodeDatabase {
 		return null;
 	}
 	
+	/**
+	 * getter for PointNode containing specified values
+	 * @return PointNode
+	 * */
 	public PointNode getPoint(double x, double y)
 	{
 		for(PointNode item : _points)

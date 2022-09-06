@@ -1,5 +1,6 @@
 package input.components.point;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -9,13 +10,13 @@ public class PointNodeDatabase {
 	
 	PointNodeDatabase()
 	{		
-
+		this._points = new LinkedHashSet<PointNode>();
 	}
 	
 	PointNodeDatabase(List<PointNode> list)
 	{
-		Set<PointNode> newSet = (Set<PointNode>) list;
-		_points = newSet; 
+		this._points = new LinkedHashSet<PointNode>();
+		_points.addAll(list);
 	}
 	
 	public void put(PointNode node)

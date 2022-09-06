@@ -25,7 +25,9 @@ public class PointNode
 	 */
 	public PointNode(double x, double y)
 	{
-		// TODO
+		this._x = x;
+		this._y = y;
+		this._name = ANONYMOUS;
 	}
 
 	/**
@@ -36,7 +38,9 @@ public class PointNode
 	 */
 	public PointNode(String name, double x, double y)
 	{
-		// TODO
+		this._x = x;
+		this._y = y;
+		this._name = name;
 	}
 
 	@Override
@@ -48,12 +52,18 @@ public class PointNode
 	@Override
 	public boolean equals(Object obj)
 	{
-		// TODO
+		if(obj.toString() == this.toString())
+			return true;
+					
+		return false;
 	}
 
     @Override
     public String toString()
     {
-		// TODO
+		String xString = Double.toString(_x);
+		String yString = Double.toString(_y);
+		
+		return _name + " (" + xString + ", " + yString + ")"; 
 	}
 }

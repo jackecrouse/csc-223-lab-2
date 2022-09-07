@@ -39,8 +39,7 @@ class SegmentNodeDatabaseTest
     	db.addUndirectedEdge(c, e);
     	db.addUndirectedEdge(x, d);
     	db.addUndirectedEdge(x, e);
-    	db.addUndirectedEdge(d, e);
-       	
+    	db.addUndirectedEdge(d, e);       	
     	
     	return db;
     }
@@ -52,10 +51,16 @@ class SegmentNodeDatabaseTest
 	void testNumUndirectedEdges()
 	{
 		SegmentNodeDatabase db = build();
-		
-		
-		
 		assertEquals(10, db.numUndirectedEdges());
+		
+		
+    	PointNode a = new PointNode("A", 3, 6);
+    	db.addUndirectedEdge(a, a);
+    	
+		assertEquals(10, db.numUndirectedEdges());
+
+
+		
 	}
 	
 	/**

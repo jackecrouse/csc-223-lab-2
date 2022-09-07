@@ -68,7 +68,7 @@ public class PointNodeDatabase
 		{
 			if(item.equals(node)) return item._name;
 		}
-		return PointNode.ANONYMOUS;
+		return null;
 	}
 	
 	/**
@@ -80,7 +80,7 @@ public class PointNodeDatabase
 		{
 			if(item._x == x && item._y == y) return item._name;
 		}
-		return PointNode.ANONYMOUS;
+		return null;
 	}
 	
 	/**

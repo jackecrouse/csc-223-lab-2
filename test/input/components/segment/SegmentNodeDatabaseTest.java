@@ -40,6 +40,7 @@ class SegmentNodeDatabaseTest
     	db.addUndirectedEdge(x, e);
     	db.addUndirectedEdge(d, e);
     	
+    	
     	return db;
     }
     

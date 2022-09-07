@@ -29,15 +29,19 @@ public class SegmentNodeDatabase
 	 * */
 	public int numUndirectedEdges() 
 	{
-		
-		
-		return 4; //just to get rid of red line
+		for(Map.Entry<PointNode, Set<PointNode>> entry : _adjLists.entrySet())
+		{
+			System.out.println(entry.getValue()); 
+		}
+		return 0;
 	}
 	
 	/**
 	 * 
 	 * */
 	protected void addDirectedEdge(PointNode a, PointNode b) {
+		
+		
 		
 	}
 	
@@ -70,4 +74,5 @@ public class SegmentNodeDatabase
 	{
 		return null;
 	}
+	
 }

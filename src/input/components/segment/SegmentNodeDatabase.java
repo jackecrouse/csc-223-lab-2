@@ -35,12 +35,9 @@ public class SegmentNodeDatabase
 		
 		for(Map.Entry<PointNode, Set<PointNode>> entry : _adjLists.entrySet())
 		{
-			for(PointNode point : entry.getValue())
-			{
-				if(_adjLists.get(point).contains(entry.getKey())) {numEdges++; }
-			}
+			System.out.println(entry.toString());
 		}
-		return numEdges / 2;
+		return 0;
 	}
 
 	/**
@@ -48,9 +45,6 @@ public class SegmentNodeDatabase
 	 * */
 	private void addDirectedEdge(PointNode a, PointNode b) 
 	{
-		//dangerous
-		if(a.equals(b)) {return; }
-		
 		if(_adjLists.containsKey(a)) {_adjLists.get(a).add(b);}
 		
 		else 
@@ -67,9 +61,17 @@ public class SegmentNodeDatabase
 	 * */
 	public void addUndirectedEdge(PointNode a, PointNode b) 
 	{
-		addDirectedEdge(a, b);
-		addDirectedEdge(b, a);
-
+		if(_adjLists.containsKey(a)) {_adjLists.get(a).add(b);}
+		
+		else 
+		{
+			Set<PointNode> set = new LinkedHashSet<PointNode>(); 
+			set.add(b);
+			
+			_adjLists.put(a, set);
+			
+			addUndirectedEdge(b, a); 
+		}
 	}
 
 	/**
@@ -94,7 +96,7 @@ public class SegmentNodeDatabase
 	}
 
 	/**
-	 * 
+	 * Creates a List of "directed edges" aka unique segments
 	 * */
 	public List<SegmentNode> asUniqueSegmentList()
 	{
@@ -104,21 +106,26 @@ public class SegmentNodeDatabase
 		
 		int numOfKeys = _adjLists.keySet().size();
 		int numValues;
-		//LinkedHashSet<PointNode> valuesHashSet = new LinkedHashSet<>();
 		
+		//loops through keys in _adjLists
 		for(int i = 0; i < numOfKeys; i++) 
 		{
 			numValues = _adjLists.get(keysArray[i]).size();
-			//valuesHashSet.addAll(_adjLists.get(keysArray[i]));
 			valuesArray = (PointNode[]) _adjLists.get(keysArray[i]).toArray();
+			
+			//loops through values for each key in _adjLists
 			for(int j = 0; j < numValues; j++) 
 			{
 				SegmentNode newSegment = new SegmentNode(keysArray[i], valuesArray[j]);
-				if(uniqueSegList.contains(newSegment.getPoint1())) {}
+				
+				//checks if segment has already been add
+				if(!(uniqueSegList.contains(new SegmentNode(keysArray[i], valuesArray[j]))) ||
+						!(uniqueSegList.contains(new SegmentNode(keysArray[j], valuesArray[i])))) 
+				{
+					uniqueSegList.add(newSegment);
+				}
 			}
 		}
-		
-		
 		return uniqueSegList;
 	}
 

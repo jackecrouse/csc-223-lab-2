@@ -42,10 +42,18 @@ public class SegmentNodeDatabase
 	/**
 	 * 
 	 * */
-	private void addDirectedEdge(PointNode a, PointNode b) {
+	private void addDirectedEdge(PointNode a, PointNode b) 
+	
+	{
+		if(_adjLists.containsKey(a)) {_adjLists.get(a).add(b);}
 		
-
-
+		else 
+		{
+			Set<PointNode> set = new LinkedHashSet<PointNode>(); 
+			set.add(b);
+			
+			_adjLists.put(a, set);
+		}
 	}
 
 	/**

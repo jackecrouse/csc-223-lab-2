@@ -48,7 +48,31 @@ class PointNodeDatabaseTest
 	@Test
 	void testContainsPointNode() 
 	{
+		PointNode nodeA = new PointNode(1.0, 2.0);
+		PointNode nodeB = new PointNode("name",0.0, 0.0);
+		PointNode nodeC = new PointNode("name",1.0, 0.0);
 		
+		PointNodeDatabase database = new PointNodeDatabase();
+		PointNodeDatabase database2 = new PointNodeDatabase();
+		
+		//if database is empty
+		assertFalse(database.contains(nodeA));
+		
+		//if database has one entry
+		database.put(nodeA);
+		assertTrue(database.contains(nodeA));
+		
+		
+		//if one entry with name
+		database2.put(nodeB);
+		assertTrue(database2.contains(nodeB));
+		
+		//if database has multiple entries
+		database.put(nodeB);
+		assertTrue(database.contains(nodeB));
+		
+		//if database looks for node that is not there
+		assertFalse(database.contains(nodeC));
 	}
 	
 	/**
@@ -57,7 +81,35 @@ class PointNodeDatabaseTest
 	@Test
 	void testContainsValues() 
 	{
+		PointNode nodeA = new PointNode(1.0, 2.0);
+		PointNode nodeB = new PointNode("name",5.3, 1.1);
+		PointNode nodec = new PointNode("name2",0.0, 0.0);
 		
+		PointNodeDatabase database = new PointNodeDatabase();
+		PointNodeDatabase database2 = new PointNodeDatabase();
+		
+		//if database is empty
+		assertFalse(database.contains(1.0, 2.0));
+		
+		//if database has one entry
+		database.put(nodeA);
+		assertTrue(database.contains(1.0, 2.0));
+		
+		
+		//if one entry with name
+		database2.put(nodeB);
+		assertTrue(database2.contains(5.3, 1.1));
+		
+		//if database has multiple entries
+		database.put(nodeB);
+		assertTrue(database.contains(5.3, 1.1));
+		
+		//if database looks for node that is not there
+		assertFalse(database.contains(2.7,2.2));
+		
+		//if node is 0.0,0.0
+		database.put(nodec);
+		assertTrue(database.contains(0.0, 0.0));
 	}
 	
 	/**

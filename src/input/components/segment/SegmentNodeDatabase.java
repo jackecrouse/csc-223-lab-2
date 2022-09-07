@@ -92,7 +92,17 @@ public class SegmentNodeDatabase
 	 * */
 	public List<SegmentNode> asSegmentList()
 	{
-		return null;
+
+		ArrayList L = new ArrayList();
+		PointNode[] keys = (PointNode[]) _adjLists.keySet().toArray();
+		for (int i = 0; i < keys.length; i++) {
+			PointNode[] values = (PointNode[]) _adjLists.get(keys[i]).toArray();
+			for(int j = 0; j < values.length; j++) {
+				SegmentNode s = new SegmentNode(keys[i],values[j]);
+				L.add(s);
+			}
+		}
+		return L;
 	}
 
 	/**

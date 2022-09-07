@@ -61,7 +61,7 @@ class PointNodeDatabaseTest
 	}
 	
 	/**
-     * 
+     * tests getName(PointNode p) by getting the name of each point node in a set database
      * */
 	@Test
 	void testGetNamePointNode() 
@@ -73,6 +73,7 @@ class PointNodeDatabaseTest
 		assertEquals(testGetNamePN.getName(twos), "twos");
 		assertEquals(testGetNamePN.getName(ones), "ones");
 		assertEquals(testGetNamePN.getName(zeros), "zeros");
+		assertNull(testGetNamePN.getName(null));
 	}
 	
 	/**

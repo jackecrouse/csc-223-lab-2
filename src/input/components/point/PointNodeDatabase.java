@@ -108,4 +108,15 @@ public class PointNodeDatabase
 		}
 		return null;
 	}
+	
+	/**
+	 * checks if _points is empty
+	 * @return boolean
+	 * */
+	public boolean isEmpty() 
+	{
+		if(_points.size() == 0)
+			return true;
+		return false;
+	}
 }

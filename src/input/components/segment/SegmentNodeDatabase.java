@@ -30,10 +30,11 @@ public class SegmentNodeDatabase
 	 * */
 	public int numUndirectedEdges() 
 	{
-		System.out.println(this._adjLists.size());
+		int numEdges = 0; 
+		
 		for(Map.Entry<PointNode, Set<PointNode>> entry : _adjLists.entrySet())
 		{
-			System.out.println(entry.getValue().toString());
+			
 		}
 		return 0;
 	}
@@ -42,7 +43,7 @@ public class SegmentNodeDatabase
 	 * 
 	 * */
 	private void addDirectedEdge(PointNode a, PointNode b) {
-
+		
 
 
 	}
@@ -60,6 +61,8 @@ public class SegmentNodeDatabase
 			set.add(b);
 			
 			_adjLists.put(a, set);
+			
+			addUndirectedEdge(b, a); 
 		}
 	}
 

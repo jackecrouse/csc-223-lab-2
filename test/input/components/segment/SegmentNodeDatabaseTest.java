@@ -42,7 +42,10 @@ class SegmentNodeDatabaseTest
     	
     	return db;
     }
-
+    
+    /**
+     * 
+     * */
 	@Test
 	void testNumUndirectedEdges()
 	{
@@ -51,6 +54,39 @@ class SegmentNodeDatabaseTest
 		assertEquals(10, db.numUndirectedEdges());
 	}
 	
+	/**
+     * 
+     * */
+	@Test
+	void testAddUndirectedEdge() 
+	{
+		
+	}
 	
+	/**
+     * 
+     * */
+	@Test
+	void testAddAdjacencyList() 
+	{
+		
+	}
 	
+	/**
+     * 
+     * */
+	@Test
+	void testAsSegmentList() 
+	{
+		
+	}
+	
+	/**
+     * 
+     * */
+	@Test
+	void testAsUniqueSegmentList() 
+	{
+		
+	}
 }

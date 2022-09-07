@@ -76,8 +76,14 @@ public class SegmentNodeDatabase
 	/**
 	 * 
 	 * */
-	public void addAdjacencyList(PointNode a, List<PointNode> b) {
-
+	public void addAdjacencyList(PointNode a, List<PointNode> b)
+	{
+		LinkedHashSet<PointNode> adjListHashSet = new LinkedHashSet<>();
+		adjListHashSet.addAll(b);
+		if(_adjLists.containsKey(a))
+			_adjLists.get(a).addAll(adjListHashSet);
+		else
+			_adjLists.put(a, adjListHashSet);
 	}
 
 	/**

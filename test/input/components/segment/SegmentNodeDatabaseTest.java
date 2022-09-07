@@ -9,6 +9,7 @@ import input.components.point.PointNode;
 class SegmentNodeDatabaseTest
 {
 	
+	
     public SegmentNodeDatabase build()
     {
     	//      A                                 
@@ -39,7 +40,7 @@ class SegmentNodeDatabaseTest
     	db.addUndirectedEdge(x, d);
     	db.addUndirectedEdge(x, e);
     	db.addUndirectedEdge(d, e);
-    	
+       	
     	
     	return db;
     }
@@ -51,6 +52,8 @@ class SegmentNodeDatabaseTest
 	void testNumUndirectedEdges()
 	{
 		SegmentNodeDatabase db = build();
+		
+		
 		
 		assertEquals(10, db.numUndirectedEdges());
 	}

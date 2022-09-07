@@ -1,5 +1,6 @@
 package input.components.segment;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -99,7 +100,28 @@ public class SegmentNodeDatabase
 	 * */
 	public List<SegmentNode> asUniqueSegmentList()
 	{
-		return null;
+		List<SegmentNode> uniqueSegList = new ArrayList<SegmentNode>();
+		PointNode[] keysArray = (PointNode[]) _adjLists.keySet().toArray();
+		PointNode[] valuesArray; 
+		
+		int numOfKeys = _adjLists.keySet().size();
+		int numValues;
+		//LinkedHashSet<PointNode> valuesHashSet = new LinkedHashSet<>();
+		
+		for(int i = 0; i < numOfKeys; i++) 
+		{
+			numValues = _adjLists.get(keysArray[i]).size();
+			//valuesHashSet.addAll(_adjLists.get(keysArray[i]));
+			valuesArray = (PointNode[]) _adjLists.get(keysArray[i]).toArray();
+			for(int j = 0; j < numValues; j++) 
+			{
+				SegmentNode newSegment = new SegmentNode(keysArray[i], valuesArray[j]);
+				if(uniqueSegList.contains(newSegment.getPoint1())) {}
+			}
+		}
+		
+		
+		return uniqueSegList;
 	}
 
 

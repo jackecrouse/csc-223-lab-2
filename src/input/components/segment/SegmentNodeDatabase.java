@@ -34,7 +34,7 @@ public class SegmentNodeDatabase
 		
 		for(Map.Entry<PointNode, Set<PointNode>> entry : _adjLists.entrySet())
 		{
-			
+			System.out.println(entry.toString());
 		}
 		return 0;
 	}
@@ -43,7 +43,6 @@ public class SegmentNodeDatabase
 	 * 
 	 * */
 	private void addDirectedEdge(PointNode a, PointNode b) 
-	
 	{
 		if(_adjLists.containsKey(a)) {_adjLists.get(a).add(b);}
 		

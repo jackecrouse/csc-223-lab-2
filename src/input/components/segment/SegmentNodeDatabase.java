@@ -34,9 +34,12 @@ public class SegmentNodeDatabase
 		
 		for(Map.Entry<PointNode, Set<PointNode>> entry : _adjLists.entrySet())
 		{
-			System.out.println(entry.toString());
+			for(PointNode point : entry.getValue())
+			{
+				if(_adjLists.get(point).contains(entry.getKey())) {numEdges++; }
+			}
 		}
-		return 0;
+		return numEdges / 2;
 	}
 
 	/**
@@ -44,6 +47,9 @@ public class SegmentNodeDatabase
 	 * */
 	private void addDirectedEdge(PointNode a, PointNode b) 
 	{
+		//dangerous
+		if(a.equals(b)) {return; }
+		
 		if(_adjLists.containsKey(a)) {_adjLists.get(a).add(b);}
 		
 		else 
@@ -60,17 +66,9 @@ public class SegmentNodeDatabase
 	 * */
 	public void addUndirectedEdge(PointNode a, PointNode b) 
 	{
-		if(_adjLists.containsKey(a)) {_adjLists.get(a).add(b);}
-		
-		else 
-		{
-			Set<PointNode> set = new LinkedHashSet<PointNode>(); 
-			set.add(b);
-			
-			_adjLists.put(a, set);
-			
-			addUndirectedEdge(b, a); 
-		}
+		addDirectedEdge(a, b);
+		addDirectedEdge(b, a);
+
 	}
 
 	/**

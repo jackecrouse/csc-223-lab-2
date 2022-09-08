@@ -92,7 +92,7 @@ public class SegmentNodeDatabase
 	public List<SegmentNode> asSegmentList()
 	{
 
-		ArrayList L = new ArrayList();
+		ArrayList<SegmentNode> L = new ArrayList<SegmentNode>();
 		PointNode[] keys = (PointNode[]) _adjLists.keySet().toArray();
 		for (int i = 0; i < keys.length; i++) {
 			PointNode[] values = (PointNode[]) _adjLists.get(keys[i]).toArray();

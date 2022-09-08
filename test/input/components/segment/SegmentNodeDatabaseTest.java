@@ -96,7 +96,31 @@ class SegmentNodeDatabaseTest
 	@Test
 	void testAddAdjacencyList() 
 	{
+		SegmentNodeDatabase testerDatabase = build();
+		PointNode test1 = new PointNode("A", 3, 6);
+		PointNode test2 = new PointNode("L", 3,8);
+		PointNode test3 = new PointNode("Q", 7,8);
+		PointNode test4 = new PointNode("Z", 3,3);
 		
+		List<PointNode> nodeList = new ArrayList<PointNode>();
+		
+		SegmentNode testA = new SegmentNode(test1, test2);
+		SegmentNode testB = new SegmentNode(test1, test3);
+		SegmentNode testC = new SegmentNode(test1, test4);
+		SegmentNode testD = new SegmentNode(test2, test3);
+		
+		nodeList.add(test2);
+		nodeList.add(test3);
+		testerDatabase.addAdjacencyList(test1 , nodeList);
+		
+		//testing segment from first index of list
+		assertTrue(testerDatabase.asSegmentList().contains(testA));
+		//testing segment from second index of list
+		assertTrue(testerDatabase.asSegmentList().contains(testB));
+		//testing non included segment
+		assertFalse(testerDatabase.asSegmentList().contains(testC));
+		//testing two non-associated but contained segments
+		assertFalse(testerDatabase.asSegmentList().contains(testD));
 	}
 	
 	/**
@@ -105,8 +129,29 @@ class SegmentNodeDatabaseTest
 	@Test
 	void testAsSegmentList() 
 	{
-		
+		SegmentNodeDatabase testerDatabase = build();
+		SegmentNode test1 = new SegmentNode( new PointNode("A", 3, 6), new PointNode("B", 2, 4));
+		SegmentNode test2 = new SegmentNode( new PointNode("B", 2, 4), new PointNode("A", 3, 6));
+    	SegmentNode test3 = new SegmentNode(new PointNode("B", 2, 4), new PointNode("D", 0, 0));
+    	SegmentNode test4 = new SegmentNode(new PointNode("D", 0, 0), new PointNode("E", 6, 0));
+    	SegmentNode test5 = new SegmentNode(new PointNode("D", 0, 0), new PointNode("G", 9, 0));
+		List<SegmentNode> Segments = testerDatabase.asSegmentList();
+		//testing if list filled
+		assertFalse(Segments.isEmpty());
+		//testing if list contains segment going one way
+		assertTrue(Segments.contains(test1));
+		//testing if aforementioned segment is undirected
+		assertTrue(Segments.contains(test2));
+		//testing 0,0 on one side
+		assertTrue(Segments.contains(test3));
+		//testing 0.0 on other side
+		assertTrue(Segments.contains(test4));
+		//testing contains with not-contained segment
+		assertFalse(Segments.contains(test5));
+		//testing length
+		assertEquals(Segments.size(), 20);
 	}
+	
 	
 	/**
      * tests asUniqueSegmentList() by executing test on

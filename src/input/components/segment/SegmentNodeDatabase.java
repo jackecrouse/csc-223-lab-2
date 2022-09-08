@@ -91,17 +91,34 @@ public class SegmentNodeDatabase
 	 * */
 	public List<SegmentNode> asSegmentList()
 	{
-
-		ArrayList<SegmentNode> L = new ArrayList<SegmentNode>();
-		PointNode[] keys = (PointNode[]) _adjLists.keySet().toArray();
-		for (int i = 0; i < keys.length; i++) {
-			PointNode[] values = (PointNode[]) _adjLists.get(keys[i]).toArray();
-			for(int j = 0; j < values.length; j++) {
-				SegmentNode s = new SegmentNode(keys[i],values[j]);
-				L.add(s);
+			List<SegmentNode> SegList = new ArrayList<SegmentNode>();
+			
+			ArrayList<Object> keyArrayList = new ArrayList<>(Arrays.asList(_adjLists.keySet().toArray()));
+			ArrayList<Object> valuesArrayList;
+			
+			//loops through keys in _adjLists
+			for(int i = 0; i < keyArrayList.size(); i++) 
+			{	
+				//creates arrayList of values at key i
+				valuesArrayList = new ArrayList<>(Arrays.asList(_adjLists.get(keyArrayList.get(i)).toArray()));
+				
+				//loops through values for each key in _adjLists
+				for(int j = 0; j < valuesArrayList.size(); j++) 
+				{					
+					if(keyArrayList.get(i) instanceof PointNode && valuesArrayList.get(j) instanceof PointNode)
+					{
+						SegmentNode newSegmentNode = 
+							new SegmentNode((PointNode) keyArrayList.get(i), (PointNode) valuesArrayList.get(j));
+						
+						
+						if(!(SegList.contains(newSegmentNode))) {
+							SegList.add(newSegmentNode);
+						}
+					}
+				}
 			}
-		}
-		return L;
+		
+		return SegList;
 	}
 
 	/**

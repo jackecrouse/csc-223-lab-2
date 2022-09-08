@@ -1,6 +1,7 @@
 package input.components.segment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -109,28 +110,30 @@ public class SegmentNodeDatabase
 	public List<SegmentNode> asUniqueSegmentList()
 	{
 		List<SegmentNode> uniqueSegList = new ArrayList<SegmentNode>();
-		PointNode[] keysArray = (PointNode[]) _adjLists.keySet().toArray();
-		PointNode[] valuesArray; 
 		
-		int numOfKeys = _adjLists.keySet().size();
-		int numValues;
+		ArrayList<Object> keyArrayList = new ArrayList<>(Arrays.asList(_adjLists.keySet().toArray()));
+		ArrayList<Object> valuesArrayList;
 		
 		//loops through keys in _adjLists
-		for(int i = 0; i < numOfKeys; i++) 
-		{
-			numValues = _adjLists.get(keysArray[i]).size();
-			valuesArray = (PointNode[]) _adjLists.get(keysArray[i]).toArray();
+		for(int i = 0; i < keyArrayList.size(); i++) 
+		{	
+			//creates arrayList of values at key i
+			valuesArrayList = new ArrayList<>(Arrays.asList(_adjLists.get(keyArrayList.get(i)).toArray()));
 			
 			//loops through values for each key in _adjLists
-			for(int j = 0; j < numValues; j++) 
-			{
-				SegmentNode newSegment = new SegmentNode(keysArray[i], valuesArray[j]);
-				
-				//checks if segment has already been add
-				if(!(uniqueSegList.contains(new SegmentNode(keysArray[i], valuesArray[j]))) ||
-						!(uniqueSegList.contains(new SegmentNode(keysArray[j], valuesArray[i])))) 
+			for(int j = 0; j < valuesArrayList.size(); j++) 
+			{					
+				//checks for "undirected edges" aka repeat segments
+				if(keyArrayList.get(i) instanceof PointNode && valuesArrayList.get(j) instanceof PointNode)
 				{
-					uniqueSegList.add(newSegment);
+					SegmentNode newSegmentNode = 
+						new SegmentNode((PointNode) keyArrayList.get(i), (PointNode) valuesArrayList.get(j));
+					
+					SegmentNode checker = 
+							new SegmentNode((PointNode)valuesArrayList.get(j), (PointNode)keyArrayList.get(i)); 
+					
+					if(!(uniqueSegList.contains(newSegmentNode)) && !(uniqueSegList.contains(checker)))
+						uniqueSegList.add(newSegmentNode);
 				}
 			}
 		}

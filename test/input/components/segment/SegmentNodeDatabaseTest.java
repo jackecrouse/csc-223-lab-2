@@ -2,6 +2,10 @@ package input.components.segment;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import input.components.point.PointNode;
@@ -105,11 +109,19 @@ class SegmentNodeDatabaseTest
 	}
 	
 	/**
-     * 
+     * tests asUniqueSegmentList() by executing test on
+     * the database created by build()
      * */
 	@Test
 	void testAsUniqueSegmentList() 
 	{
+		SegmentNodeDatabase testerDatabase = build();
+		List<SegmentNode> uniqueSegments = testerDatabase.asUniqueSegmentList();
 		
+		SegmentNode testNode = new SegmentNode( new PointNode("A", 3, 6), new PointNode("B", 2, 4));
+		
+		assertTrue(uniqueSegments.get(0) instanceof SegmentNode);
+		assertEquals(uniqueSegments.size(), 10);
+		//assertEquals(uniqueSegments.get(0), testNode);
 	}
 }

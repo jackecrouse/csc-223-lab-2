@@ -118,10 +118,14 @@ class SegmentNodeDatabaseTest
 		SegmentNodeDatabase testerDatabase = build();
 		List<SegmentNode> uniqueSegments = testerDatabase.asUniqueSegmentList();
 		
-		SegmentNode testNode = new SegmentNode( new PointNode("A", 3, 6), new PointNode("B", 2, 4));
+		SegmentNode testFirstNode = new SegmentNode( new PointNode("A", 3, 6), new PointNode("B", 2, 4));
+    	SegmentNode testMiddleNode = new SegmentNode(new PointNode("B", 2, 4), new PointNode("D", 0, 0));
+    	SegmentNode testLastNode = new SegmentNode(new PointNode("D", 0, 0), new PointNode("E", 6, 0));
 		
 		assertTrue(uniqueSegments.get(0) instanceof SegmentNode);
 		assertEquals(uniqueSegments.size(), 10);
-		//assertEquals(uniqueSegments.get(0), testNode);
+		assertEquals(uniqueSegments.get(0), testFirstNode);
+		assertEquals(uniqueSegments.get(4), testMiddleNode);
+		assertEquals(uniqueSegments.get(9), testLastNode);
 	}
 }

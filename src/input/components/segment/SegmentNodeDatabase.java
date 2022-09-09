@@ -28,7 +28,7 @@ public class SegmentNodeDatabase
 	}
 
 	/**
-	 * 
+	 * Returns the number of undirected edges
 	 * */
 	public int numUndirectedEdges() 
 	{
@@ -45,7 +45,7 @@ public class SegmentNodeDatabase
 	}
 
 	/**
-	 * 
+	 * Adds a directed edge
 	 * */
 	private void addDirectedEdge(PointNode a, PointNode b) 
 	{
@@ -64,7 +64,7 @@ public class SegmentNodeDatabase
 	}
 
 	/**
-	 * 
+	 * Adds an undirected edge by creating opposing directed edges
 	 * */
 	public void addUndirectedEdge(PointNode a, PointNode b) 
 	{
@@ -74,7 +74,7 @@ public class SegmentNodeDatabase
 	}
 
 	/**
-	 * 
+	 * Adds an adjacency list to the map
 	 * */
 	public void addAdjacencyList(PointNode a, List<PointNode> b)
 	{
@@ -87,7 +87,7 @@ public class SegmentNodeDatabase
 	}
 
 	/**
-	 * 
+	 * Returns this object as a list of segment nodes
 	 * */
 	public List<SegmentNode> asSegmentList()
 	{

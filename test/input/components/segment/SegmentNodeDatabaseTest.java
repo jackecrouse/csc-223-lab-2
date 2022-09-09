@@ -2,8 +2,6 @@ package input.components.segment;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -75,9 +73,6 @@ class SegmentNodeDatabaseTest
 		PointNode a = new PointNode("A", 3, 6);
     	PointNode b = new PointNode("B", 2, 4);
     	PointNode c = new PointNode("C", 4, 4);
-    	PointNode d = new PointNode("D", 0, 0);
-    	
-    	
     	SegmentNodeDatabase db = new SegmentNodeDatabase();
 
     	db.addUndirectedEdge(a, b);
